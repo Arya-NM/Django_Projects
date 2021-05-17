@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form  action="add" method="POST">
+		{% csrf_token %}
+		<label>Name: </label>
+		<input type="text" name="name">
+		<label>Phone Number </label>
+		<input type="text" name="phone_number">
+		<input type="submit" value="add">
+		
+</form>
+{{msg1}}
+{{msg2}}	
+{{msg3}}
 
+	<form action="display">
+		<table border="1">
+			<tr>
+				<td>Name</td><td>phn_num</td>
+			</tr>
+			{% for i in cudtls %}
+			<tr>
+				<td>{{i.name}}</td><td>{{i.phone_number}}</td>
+			</tr>
+			{% endfor %}
+		</table><br>
+		<input type="submit" value="display"><br>
+	</form>
+
+
+
+	<form action="update" method="POST">
+		{% csrf_token %}
+		<label>Name Changed</label>
+		<input type="text" name="name"><br>
+		<label>new name</label>
+		<input type="text" name="newname"><br>
+		<input type="submit" value="chgname" name="btn"><br>
+
+
+		<label>phone number to be changed</label>
+		<input type="number" name="phone_number"><br>
+		<label>new number</label>
+		<input type="number" name="newnum"><br>
+		<input type="submit" value="chgnum" name="btn"><br>
+		{{msg}}
+	</form>
+
+		
+	<form action="delete" method="POST">
+		{% csrf_token %}
+		<label>name deleted</label>
+		<input type="text" name="name"><br>
+		<input type="submit" name="delete"><br>
+		{{msg}}
+
+
+
+
+</body>
+</html>
