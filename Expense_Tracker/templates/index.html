@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form  action="insert" method="POST">
+		{% csrf_token %}
+		<label>Enter the balance</label>
+		<input type="number" name="ini_bal">
+		<input type="submit" value="add_bal"><br>
+	{{msg}}	
+</form>
+	<form action="add" method="POST">
+		{% csrf_token %}
+		<label>Expance name</label>
+		<input type="text" name="iname">
+		<label>enter amount</label>
+		<input type="number" name="amd">
+		<input type="submit" name="add_item">
+	</form>
+	{{msg}}
 
+
+
+<form action="display">
+		<table border="1">
+			<tr>
+				<td>Expance Name</td><td>exp_amount</td>
+			</tr>
+			{% for i in cudtls %}
+			<tr>
+				<td>{{i.expance_name}}</td><td>{{i.expance_amount}}</td>
+			</tr>
+			{% endfor %}
+		</table><br>
+		<input type="submit" value="display"><br>
+	</form>
+
+
+
+</body>
+</html>
